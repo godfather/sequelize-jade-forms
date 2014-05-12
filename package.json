@@ -1,0 +1,32 @@
+{
+  "name": "sequelize-jade-forms",
+  "version": "0.1.0",
+  "description": "generate Jade formularies integrated to the Sequelize models ",
+  "keywords": [
+    "forms",
+    "middleware",
+    "sequelize",
+    "jade"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:godfather/sequelize-jade-forms.git"
+  },
+  "author": {
+    "name": "Santiago **Godfather** Carmo",
+    "email": "santiagocca@gmail.com",
+    "url": "https://github.com/godfather"
+  },
+  "licenses": "MIT",
+  "main": "./index.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "readme": "# cookie-parser\n\nParse _Cookie_ header and populate `req.cookies` with an object keyed by the cookie\nnames. Optionally you may enabled signed cookie support by passing a `secret` string,\nwhich assigns `req.secret` so it may be used by other middleware.\n\n```js\nvar cookieParser = require('cookie-parser');\n\nconnect()\n .use(cookieParser('optional secret string'))\n .use(function(req, res, next){\n   res.end(JSON.stringify(req.cookies));\n })\n```\n\n## install\n\n```shell\nnpm install cookie-parser\n```\n\n## License\n\nMIT\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/godfather/sequelize-jade-forms/issues"
+  },
+  "_id": "sequelize-jade-forms@0.1.0",
+  "_from": "sequelize-jade-forms@*"
+}
