@@ -18,7 +18,7 @@
     "url": "https://github.com/godfather"
   },
   "licenses": "MIT",
-  "main": "./index.js",
+  "main": "./jade_form_helper.js",
   "engines": {
     "node": ">= 0.10.0"
   },
