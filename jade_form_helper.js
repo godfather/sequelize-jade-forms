@@ -14,12 +14,14 @@ JadeFormHelper.prototype.start = function(model) {
 JadeFormHelper.prototype.genericInput = function(name, type, options) {
   var id         = this.model.modelName() + '_' + name,
       field_name = this.model.modelName() + '[' + name + ']',
+      value      = '';
       error      = '';
       
   if(this.model.errors) error = this.model.errors[name] ? this.model.errors[name] : '';
+  if(this.model.errorData) value = this.model.errorData[this.model.modelName()][name] ? 'value="'+ this.model.errorData[this.model.modelName()][name] + '"' : '';
   
   var field  = '\n\t.row\n\t\tlabel(for="'+ id +'") ' + this.model.getAttributeLabel(name); 
-      field += '\n\t\t\tinput(type="'+ type + '" name="'+ field_name +'" id="' + id + '")';
+      field += '\n\t\t\tinput(type="'+ type + '" name="'+ field_name +'" id="' + id + '" ' + value + ')';
       field += '\n\t\t.error '+ error + '\n';
   this.form.push(field);
 }
@@ -30,6 +32,19 @@ JadeFormHelper.prototype.textField = function(name) {
 
 JadeFormHelper.prototype.fileField = function(name) {
   this.genericInput(name, 'file', {});
+}
+
+JadeFormHelper.prototype.textArea = function(name, options) {
+  var id         = this.model.modelName() + '_' + name,
+      field_name = this.model.modelName() + '[' + name + ']',
+      error      = '';
+      
+  if(this.model.errors) error = this.model.errors[name] ? this.model.errors[name] : '';
+  
+  var field  = '\n\t.row\n\t\tlabel(for="'+ id +'") ' + this.model.getAttributeLabel(name); 
+      field += '\n\t\t\ttextarea(name="'+ field_name +'" id="' + id + '")';
+      field += '\n\t\t.error '+ error + '\n';
+  this.form.push(field);
 }
 
 JadeFormHelper.prototype.submitButton = function(name) {
