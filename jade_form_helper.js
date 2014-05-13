@@ -47,6 +47,23 @@ JadeFormHelper.prototype.textArea = function(name, options) {
   this.form.push(field);
 }
 
+JadeFormHelper.prototype.selectField = function(name, values, options) {
+  var id         = this.model.modelName() + '_' + name,
+      field_name = this.model.modelName() + '[' + name + ']',
+      error      = '';
+      
+  if(this.model.errors) error = this.model.errors[name] ? this.model.errors[name] : '';
+  
+  var field  = '\n\t.row\n\t\tlabel(for="'+ id +'") ' + this.model.getAttributeLabel(name); 
+      field += '\n\t\t\tselect(name="'+ field_name +'" id="' + id + '")';
+      
+  if(values) for(k in values) { field += '\n\t\t\t\toption(value="' + k + '") ' + values[k]; }
+  
+      
+      field += '\n\t\t.error '+ error + '\n';
+  this.form.push(field);
+}
+
 JadeFormHelper.prototype.submitButton = function(name) {
   var field  = '\n\t.row.button';
       field += '\n\t\tinput(type="submit" name="'+ name +'")';
@@ -60,6 +77,12 @@ JadeFormHelper.prototype.end = function(method) {
   for(i in this.form) { form += this.form[i]; }
   var out = jade.compile(form, {});
   return out();
+}
+
+JadeFormHelper.prototype.listData = function(models, key, value) {
+  var data = {};
+  if(models) for(i in models) { data[models[i][key]] = models[i][value]; }
+  return data;
 }
 
 module.exports = function form() { 
